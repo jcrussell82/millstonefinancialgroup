@@ -117,25 +117,30 @@ nav.main-nav a:hover{color:var(--blue);}
 }
 .header-cta:hover{background:var(--blue);transform:translateY(-1px);}
 
-/* Hamburger menu toggle */
+/* Hamburger menu toggle (CodePen "Icon 3" style: outer bars shrink to center, inner bars form an X) */
 .menu-toggle{
   display:none;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:5px;
-  width:40px;height:40px;
+  position:relative;
+  width:32px;height:24px;
   background:none;border:none;cursor:pointer;
   flex-shrink:0;
+  transition:transform .5s ease-in-out;
 }
 .menu-toggle span{
-  display:block;width:26px;height:2.5px;
-  background:var(--navy);border-radius:2px;
-  transition:transform .25s ease, opacity .25s ease;
+  display:block;position:absolute;left:0;
+  height:3px;width:100%;
+  background:var(--blue);border-radius:3px;
+  opacity:1;
+  transition:.25s ease-in-out;
 }
-.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
-.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
-.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+.menu-toggle span:nth-child(1){top:0px;}
+.menu-toggle span:nth-child(2),
+.menu-toggle span:nth-child(3){top:10.5px;}
+.menu-toggle span:nth-child(4){top:21px;}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){top:10.5px;width:0%;left:50%;}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){transform:rotate(45deg);}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg);}
+.menu-toggle[aria-expanded="true"] span:nth-child(4){top:10.5px;width:0%;left:50%;}
 
 .mobile-nav{
   display:flex;
@@ -1230,7 +1235,7 @@ footer a:hover{color:var(--gold);}
       <a class="header-cta" href="#contact-page">Get Started</a>
     </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
     </button>
   </div>
   <nav class="mobile-nav" id="mobileNav">
